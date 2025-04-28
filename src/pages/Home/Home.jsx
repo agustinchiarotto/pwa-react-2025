@@ -4,6 +4,8 @@ import Input from "../../components/Input/Input.jsx";
 import styles from "../../test.module.css";
 import TarjetaAnimal from "../../components/TarjetaAnimal/TarjetaAnimal.jsx";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { ROUTES } from "../../const/routes.js";
 
 const animal1 = {
   nombre: "gato",
@@ -29,6 +31,8 @@ const Home = () => {
   // const --> es constante
   // [nombre, setNombre] --> 1er valor es la definicion de la variable del estado, el segundo es una funcion para modificar el estado.
   //  const [nombre, setNombre] = useState("Agustin");
+
+  const navigate = useNavigate();
 
   const [contador, setContador] = useState(0);
   const [animales, setAnimales] = useState([animal1, animal2, animal3]);
@@ -75,8 +79,13 @@ const Home = () => {
     });
   };
 
+  const onClickNavigateToDetailsHandler = () => {
+    navigate(ROUTES.pokemon);
+  };
+
   return (
     <div className="container">
+      <Button texto="Details" onClick={onClickNavigateToDetailsHandler} />
       {animal1.nombre} <br />
       {animal1.edad}
       <Titulo texto={contador} />

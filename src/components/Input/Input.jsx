@@ -6,7 +6,11 @@ const Input = ({ onChange, value }) => {
   };
 
   return (
-    <input className={styles.input} value={value} onChange={handleChange} />
+    <input
+      className="text-white border border-white rounded-lg p-2 text-xs w-24 "
+      value={value}
+      onChange={handleChange}
+    />
   );
 };
 

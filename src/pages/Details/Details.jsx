@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import Input from "../../components/Input/Input.jsx";
 import Button from "../../components/Button/Button.jsx";
+import Titulo from "../../components/Titulo/Titulo.jsx";
+import { useNavigate } from "react-router";
+import { ROUTES } from "../../const/routes.js";
 
 const Details = () => {
+  const navigate = useNavigate();
   const [pokemon, setPokemon] = useState();
   const [searchValue, setSearchValue] = useState("charmander");
   const getPokemon = async () => {
@@ -33,15 +37,20 @@ const Details = () => {
     getPokemon();
   };
 
+  const onClickNavigateToHomeHandler = () => {
+    navigate(ROUTES.home);
+  };
+
   if (pokemon === undefined) {
     return <h1>Loading....</h1>;
   }
 
   return (
     <>
+      <Button texto="Volver a Home" onClick={onClickNavigateToHomeHandler} />
       <Input value={searchValue} onChange={onSearchChangeHandler} />
       <Button texto="Buscar Pokémon" onClick={onSearchClickHandler} />
-      <h1>DETAILS {pokemon.name}</h1>
+      <Titulo texto={`DETAILS ${pokemon.name}`} />
       <img src={pokemon.sprites.front_default} />
     </>
   );
