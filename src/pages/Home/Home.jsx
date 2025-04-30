@@ -80,12 +80,12 @@ const Home = () => {
   };
 
   const onClickNavigateToDetailsHandler = () => {
-    navigate(ROUTES.pokemon);
+    navigate(`${ROUTES.pokemon}/charmander`);
   };
 
   return (
     <div className="container">
-      <Button texto="Details" onClick={onClickNavigateToDetailsHandler} />
+      <Button texto="Pokemon" onClick={onClickNavigateToDetailsHandler} />
       {animal1.nombre} <br />
       {animal1.edad}
       <Titulo texto={contador} />
